@@ -23,11 +23,12 @@ make_models = []
 prices = []
 mm_prices = []
 for section in paragraph_data:
-    make_models.append(re.findall(r'>(Used[a-zA-Z0-9 ]+)', str(section)))
+    make_model = re.findall(r'>(Used[a-zA-Z0-9 ]+)', str(section))
     price_span = section.find_all('h4', {'class':'primary-price'})
-    prices.append(re.findall(r'span>([$,0-9]+)</span', str(price_span)))
+    price = re.findall(r'span>([$,0-9]+)</span', str(price_span))
+    mm_prices = make_model[0] + " " + price[0]
 
 
 #make_model = re.findall(r'>(Used[a-zA-Z0-9 ]+)', str(paragraph_data))
 
-print(paragraph_data[0])
+print(mm_prices)
